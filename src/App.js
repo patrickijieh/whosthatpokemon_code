@@ -105,7 +105,7 @@ export default function App() {
           <LeaderBoard name={userName} score={score} />
         </div>
       )}
-      <footer className="copyRight">Copyright &copy; Jose Yamin 2021</footer>
+      <footer className="copyRight">Copyright &copy; Jose Yamin, Patrick Ijieh, and Hafijur Raman 2023</footer>
     </div>
   );
 }
