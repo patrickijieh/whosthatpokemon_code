@@ -4,7 +4,7 @@ const Timer = (props) => {
   const { gameOver, startTimer } = props;
 
 
-  const [seconds, setSeconds] = useState(60);
+  const [seconds, setSeconds] = useState(2);
   const [intervalState, setIntervalState] = useState(null);
 
   useEffect(() => {
