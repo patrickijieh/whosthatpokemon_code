@@ -4,6 +4,7 @@
   "description": "Website App",
   "main": "index.js",
   "scripts": {
+    "prestart": "npm install --prefix server && npm install --prefix client",
     "server": "npm start --prefix server",
     "client": "npm start --prefix client",
     "start": "concurrently \"npm run server\" \"npm run client\""
