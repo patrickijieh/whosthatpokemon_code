@@ -20,7 +20,7 @@ export default function App() {
   
   const max = 151;
 
-  useEffect(() => {{
+  /*useEffect(() => {{
     fetch("/users").then(
       response => response.json()
       ).then(
@@ -28,7 +28,7 @@ export default function App() {
       ).then(
         console.log(backendData)
       )
-  }})
+  }})*/
 
   const enteredUserName = (name) => {
     setUserName(name);
