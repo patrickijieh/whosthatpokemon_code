@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "prestart": "npm install https-proxy-agent && npm install request",
+    "prestart": "npm install request",
     "start": "node server",
     "dev": "nodemon server"
   },
