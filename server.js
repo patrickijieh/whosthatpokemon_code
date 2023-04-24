@@ -13,7 +13,7 @@ var endpoint = process.env.DATABASE_URL;
 var proxy = process.env.QUOTAGUARDSHIELD_URL;
 var agent = new HttpsProxyAgent(proxy);
 var options = {
-  uri: url.parse(testEndpoint),
+  uri: url.parse(endpoint),
   agent
 };
 
