@@ -5,24 +5,20 @@ const app = express();
 const mongoose = require('mongoose');
 const path = require('path');
 
-var url = require('url');
-var HttpsProxyAgent = require('https-proxy-agent');
 var request = require('request');
 
-var endpoint = process.env.DATABASE_URL;
-var proxy = process.env.QUOTAGUARDSTATIC_URL;
-var agent = new HttpsProxyAgent(proxy);
 var options = {
-  uri: url.parse(endpoint),
-  agent
+    proxy: process.env.QUOTAGUARDSTATIC_URL,
+    url: process.env.DATABASE_URL,
+    headers: {
+        'User-Agent': 'node.js'
+    }
 };
 
 function callback(error, response, body) {
-  if (!error && response.statusCode == 200) {
-    console.log('body: ', body);
-  } else {
-    console.log('error: ', error);
-  }
+    if (!error && response.statusCode == 200) {
+        console.log(body);
+    }
 }
 
 request(options, callback);
