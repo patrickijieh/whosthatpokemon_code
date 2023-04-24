@@ -10,7 +10,7 @@ var HttpsProxyAgent = require('https-proxy-agent');
 var request = require('request');
 
 var endpoint = process.env.DATABASE_URL;
-var proxy = process.env.QUOTAGUARDSHIELD_URL;
+var proxy = process.env.QUOTAGUARDSTATIC_URL;
 var agent = new HttpsProxyAgent(proxy);
 var options = {
   uri: url.parse(endpoint),
