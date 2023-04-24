@@ -12,7 +12,7 @@ http = require("http");
 url = require("url");
 
 proxy = url.parse(process.env.QUOTAGUARDSTATIC_URL);
-target  = url.parse("https://cop4331-whosthatpokemon.herokuapp.com/");
+target  = url.parse(process.env.DATABASE_URL);
 
 options = {
   hostname: proxy.hostname,
