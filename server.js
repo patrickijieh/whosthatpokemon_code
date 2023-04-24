@@ -39,4 +39,4 @@ app.use(express.json());
 const userRouter = require('./routes/users');
 app.use("/users", userRouter);
 
-app.listen(process.env.PORT || 5000, () => console.log('Server started on port ${PORT}'));
+app.listen(process.env.PORT || 5000, () => console.log(`Server started on port ${PORT}`));
