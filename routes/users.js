@@ -13,11 +13,29 @@ router.get('/', async (req, res) => {
     }
 });
 
-// GET one
+// GET one (via id)
 
-router.get('/:id', getUser, async (req, res) => {
-    res.send(req.Person);
+router.get('/:userName', getUser, async (req, res) => {
+    res.json(res.Person);
+    console.log(res.Person);
 });
+
+// GET one (via userName)
+/*router.get('', async(req, res) => {
+
+    try {
+        const Person = await user.findOne({ userName: req.params.userName });
+
+        if (Person == null) {
+            return res.status(500).json({ message: 'Cannot find user' });
+        }
+
+        res.json(Person);
+
+    } catch(err) {
+        res.status(500).json({ message: err.message });
+    }
+});*/
 
 // CREATE one
 
@@ -47,7 +65,7 @@ router.post('/', async (req, res) => {
 
 // UPDATE one
 
-router.patch('/:id', getUser, async (req, res) => {
+router.patch('/', getUser, async (req, res) => {
     if (req.body.userName != null) {
         res.Person.userName = req.body.userName;
     }
@@ -68,7 +86,7 @@ router.patch('/:id', getUser, async (req, res) => {
 
 // DELETE one
 
-router.delete('/:id', getUser, async (req, res) => {
+router.delete('/', getUser, async (req, res) => {
     try {
         await res.Person.remove();
         res.json({ message: 'Deleted user' });
@@ -80,16 +98,18 @@ router.delete('/:id', getUser, async (req, res) => {
 async function getUser(req, res, next)
 {
     try {
-        Person = await user.findById(req.params.id);
-        if (Person == null) {
+        const getPerson = await user.findOne({userName: req.params.userName});
+        console.log("GETTING FROM USERNAME");
+        if (getPerson == null) {
             return res.status(404).json({ message: 'Cannot find user' });
         }
+
+        res.Person = getPerson;
+        next();
+
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
-    
-    res.Person = Person;
-    next();
 }
 
 module.exports = router;
