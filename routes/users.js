@@ -65,7 +65,7 @@ router.post('/', async (req, res) => {
 
 // UPDATE one
 
-router.patch('/', getUser, async (req, res) => {
+router.patch('/:userName', getUser, async (req, res) => {
     if (req.body.userName != null) {
         res.Person.userName = req.body.userName;
     }
