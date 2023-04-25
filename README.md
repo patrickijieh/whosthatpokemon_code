@@ -8,6 +8,6 @@ Hosted on Heroku.
 https://cop4331-whosthatpokemon.herokuapp.com/
 
 ## Credits
-Jose Yamin
-Patrick Ijieh
-Hafijur Raman
+Jose Yamin<br>
+Patrick Ijieh<br> 
+Hafijur Raman<br>
