@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
@@ -19,6 +21,11 @@ function callback(error, response, body) {
     }
 }
 
+function databaseurl()
+{
+    return process.env.DATABASE_URL;
+}
+
 request(options, callback);
 
 app.use(express.static(path.join(__dirname, 'build')));
@@ -37,4 +44,4 @@ app.use(express.json());
 const userRouter = require('./routes/users');
 app.use("/users", userRouter);
 
-app.listen(process.env.PORT, () => console.log(`Server started on port ${process.env.PORT}`));
+app.listen(process.env.PORT || 5000, () => console.log(`Server started on port ${process.env.PORT}`));

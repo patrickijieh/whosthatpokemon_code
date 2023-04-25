@@ -22,6 +22,15 @@ router.get('/:id', getUser, async (req, res) => {
 // CREATE one
 
 router.post('/', async (req, res) => {
+
+    const dbUser = await user.findOne({ userName: req.body.userName });
+
+    if (dbUser != null)
+    {
+        res.status(400).json({ message: "Username is already taken!" });
+        return;
+    }
+
     const newUser = new user({
         userName: req.body.userName,
         userRank: req.body.userRank,
