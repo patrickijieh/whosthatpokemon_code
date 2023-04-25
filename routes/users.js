@@ -17,7 +17,6 @@ router.get('/', async (req, res) => {
 
 router.get('/:userName', getUser, async (req, res) => {
     res.json(res.Person);
-    console.log(res.Person);
 });
 
 // GET one (via userName)
@@ -86,7 +85,7 @@ router.patch('/:userName', getUser, async (req, res) => {
 
 // DELETE one
 
-router.delete('/', getUser, async (req, res) => {
+router.delete('/:userName', getUser, async (req, res) => {
     try {
         await res.Person.remove();
         res.json({ message: 'Deleted user' });
@@ -99,7 +98,6 @@ async function getUser(req, res, next)
 {
     try {
         const getPerson = await user.findOne({userName: req.params.userName});
-        console.log("GETTING FROM USERNAME");
         if (getPerson == null) {
             return res.status(404).json({ message: 'Cannot find user' });
         }
